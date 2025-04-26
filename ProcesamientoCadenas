@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class ProcesamientoCadenas {
+
+    static Scanner scanner = new Scanner(System.in);
+
+    public static String leerCadena(String mensaje) {
+        System.out.print(mensaje);
+        return scanner.nextLine();
+    }
+
+    public static int contarVocales(String s) {
+        int total = 0;
+        for (int i = 0; i < s.length(); i++) {
+            String letra = "" + s.charAt(i);  
+            if (letra.equals("a") || letra.equals("A") ||
+                letra.equals("e") || letra.equals("E") ||
+                letra.equals("i") || letra.equals("I") ||
+                letra.equals("o") || letra.equals("O") ||
+                letra.equals("u") || letra.equals("U")) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public static String invertirCadena(String s) {
+        String invertida = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            invertida += s.charAt(i);
+        }
+        return invertida;
+    }
+
+    public static boolean esPalindromo(String s) {
+        String original = "";
+        String invertida = "";
+
+       
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != ' ') {
+                original += s.charAt(i);
+            }
+        }
+
+        for (int i = original.length() - 1; i >= 0; i--) {
+            invertida += original.charAt(i);
+        }
+
+        if (original.equals(invertida)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String texto = leerCadena("Escribe un texto: ");
+
+        System.out.println("Número de vocales: " + contarVocales(texto));
+        System.out.println("Texto invertido: " + invertirCadena(texto));
+
+        if (esPalindromo(texto)) {
+            System.out.println("Es palíndromo.");
+        } else {
+            System.out.println("NO es palíndromo ");
+        }
+    }
+}
+
+//el esquals los utilice para comparar dos cadenas de textos, porque al usar "==" me presentaba error ;c
+//el chart at , para recorrer letra por letra y palabra por palabra
